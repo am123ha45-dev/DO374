@@ -1,0 +1,33 @@
+---
+- name: P1_deply a webserver
+  hosts: servera1.lab.example.com
+  tasks:
+    - name: deploy a web
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+
+    - name: restart
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: deploy
+      ansible.builtin.copy:
+        content: " Iam preparing for the Exam"
+        dest: /var/www/html/index.html
+
+    - name: allow
+      ansible.posix.firewalld:
+        service: http
+        state: enabled
+        permanent: true
+        immediate: true
+
+- name: p2_ check
+  hosts: servera1.lab.example.com
+  tasks:
+    - name: Check
+      ansible.builtin.uri:
+        url: http://servera1.lab.example.com
