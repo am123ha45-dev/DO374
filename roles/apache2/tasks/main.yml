@@ -1,0 +1,25 @@
+---
+# tasks file for apache2
+- name: install
+  ansible.builtin.dnf:
+    name: httpd
+    state: present
+
+- name: start a service
+  service:
+    name: httpd
+    state: restarted
+    enabled: true
+
+- name: deploying
+  copy:
+    content: "{{ budy }}"
+    dest: /var/www/html/index.html
+  notify:  my_handler
+
+- name: allow trafic
+  ansible.posix.firewalld:
+    service: http
+    permanent: true
+    state: enabled
+    immediate: true   

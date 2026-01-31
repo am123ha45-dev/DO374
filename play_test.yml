@@ -1,0 +1,36 @@
+---
+- name: P1_testnginx
+  hosts: servera1.lab.example.com
+  gather_facts: false
+  tasks:
+    - name: install http
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+      become: true
+    - name: start a service
+      ansible.builtin.service:
+        name: httpd
+        enabled: true
+        state: started
+      become: true
+    - name: Deploying
+      ansible.builtin.copy:
+        content: "Helow World"
+        dest: /var/www/html/index.html
+      become: true
+    - name: allowing firewall
+      ansible.posix.firewalld:
+        service: http
+        state: enabled
+        immediate: true
+        permanent: true
+      become: true  
+- name: P2_Verifiying the web
+  hosts: localhost
+  tasks:
+    - name: checking
+      ansible.builtin.uri:
+        url: http://servera1.lab.example.com
+      become: false  
+      

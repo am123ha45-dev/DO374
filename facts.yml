@@ -1,0 +1,17 @@
+---
+- name: P1_testnginx
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: abc
+      setup:
+        gather_subset:
+          - '!all'
+          - network
+
+    - name: Display the Hosts
+      debug:
+        var: ansible_facts
+      tags:
+        - display
+        

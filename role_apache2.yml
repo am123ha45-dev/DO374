@@ -1,0 +1,20 @@
+---
+- name: P1_training on roles
+  hosts: servera1.lab.example.com
+  tasks:
+    - name: regular task_1
+      debug:
+        msg: "this is {{ ansible_distribution }}"
+  roles:
+    - role: apache2
+      become: true
+
+  pre_tasks:
+    - name: pre_task_2
+      debug:
+        msg: "this is {{ ansible_os_family }}"
+  
+  post_tasks:
+    - name: post_task_2
+      debug:
+        msg: "this is {{ ansible_machine_id }}"

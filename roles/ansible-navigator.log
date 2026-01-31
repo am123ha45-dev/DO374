@@ -1,0 +1,9 @@
+2026-01-28T08:13:17.538872+00:00 ERROR 'ansible_navigator.actions.doc._run_runner' Error occurred while fetching doc for plugin ansible.builtin.config: '[WARNING]: ansible.builtin.config was not found
+'
+2026-01-28T08:13:28.496404+00:00 WARNING 'ansible_navigator.run' Dirty exit, killing the pid
+2026-01-28T08:18:10.576827+00:00 ERROR 'ansible_navigator.actions.doc._run_runner' Error occurred while fetching doc for plugin ansible.builtin.vars: '[WARNING]: ansible.builtin.vars was not found
+'
+2026-01-28T08:18:21.726567+00:00 WARNING 'ansible_navigator.run' Dirty exit, killing the pid
+2026-01-28T08:19:23.335407+00:00 ERROR 'ansible_navigator.actions.doc._run_runner' Error occurred while fetching doc for plugin ansible.builtin.lines: '[WARNING]: ansible.builtin.lines was not found
+'
+2026-01-28T08:20:04.970326+00:00 WARNING 'ansible_navigator.run' Dirty exit, killing the pid

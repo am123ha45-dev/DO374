@@ -1,0 +1,5 @@
+---
+# handlers file for apache2
+- name: my_handler
+  debug:
+    msg: "This is a hendler message"

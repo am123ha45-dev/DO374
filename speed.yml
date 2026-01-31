@@ -1,0 +1,11 @@
+---
+- name: P1_testnginx
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Display the Hosts
+      debug:
+        var: inventory_hostname
+      tags:
+        - display
+        

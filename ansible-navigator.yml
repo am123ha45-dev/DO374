@@ -1,0 +1,14 @@
+---
+ansible-navigator:
+  execution-environment:
+    image: ghcr.io/ansible/creator-ee:v0.22.0
+    pull:
+      policy: missing
+  logging:
+    append: true
+    file: /home/devops/ansible-navigator.log
+    level: warning
+  mode: stdout
+  playbook-artifact:
+    enable: false
+    save-as: '{playbook_dir}/{playbook_name}-artifact-{time_stamp}.json'
