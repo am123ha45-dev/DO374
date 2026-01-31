@@ -1,0 +1,19 @@
+- name: verfypkg
+  hosts: servera1.lab.example.com
+  tasks:
+    - name: verify httpd
+      ansible.builtin.package_facts:
+        manager: auto
+      tags: ver_http
+    
+    - name: display
+      ansible.builtin.debug:
+        msg: "The 'httpd' is installed"
+      when: "'httpd' in ansible_facts.packages" 
+      tags: result_http
+    
+    - name: Not display
+      ansible.builtin.debug:
+        msg: "The 'httpd' is NOT installed"
+      when: "'httpd' not in ansible_facts.packages" 
+      tags: result_http
