@@ -1,0 +1,36 @@
+---
+- name: Config Web Server
+  hosts: servera1.lab.example.com
+  gather_facts: no
+  tasks: 
+    - name: installation
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+      tags:
+        - alpha
+        - beta
+        - never
+    - name: start 
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+      tags:
+        - alpha
+        - beta
+        - never
+    - name: Dployment
+      ansible.builtin.copy:
+        content: "Que sera sera"
+        dest: /var/www/html/index.html
+      tags:
+        - alpha
+        - never
+
+    - name: Dployment
+      ansible.builtin.copy:
+        content: "Whatever page"
+        dest: /var/www/html/index.html
+      tags:
+        - beta
+        - never
